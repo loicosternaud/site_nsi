@@ -1,0 +1,29 @@
+body{
+    background-color: rgb(243, 212, 172);
+}
+h1{
+    text-align: center;
+}
+.entrees , .images{
+    width: 400px;
+    max-width: 100%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px dashed black;
+    border-radius: 50px;
+}
+input , img{
+    margin: 10px;
+}
+p{
+    margin: auto;
+    width: 400px;
+    text-align: center;
+    border: 1px dashed black;
+    border-radius: 50px;
+}
+span{
+    color: red;
+}

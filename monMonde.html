@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from www.nsibranly.fr/loicO/monMonde.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Jun 2021 16:22:05 GMT -->
+<head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="monMonde.css">
+    </head>
+    <body>
+        <p id="affichage"><b>Bonjour, mais qui es-tu ?</b></p>
+        <p id="p">Viens : </p>
+        <input type="text" placeholder="entre ton nom" id="saisie"><br/>
+        <input type="button" value="Valider" id="bouton">
+    </body>
+    <script>
+        // Fonctions
+        function valider(){
+            bouton.style.display='none';
+            saisie.style.display='none';
+            p.style.display='none';
+            nom=saisie.value;
+            message="Bonjour "+nom+", bienvenue dans mon monde";
+            affichage.textContent = message;
+        }
+        //Main
+        let saisie = document.querySelector("#saisie");
+        let bouton = document.querySelector("#bouton");
+        let affichage = document.querySelector("#affichage");
+        let nom = document.querySelector("#nom");
+        let p = document.querySelector("#p");
+        // Evènements
+        bouton.addEventListener('click',valider); 
+    </script>
+
+<!-- Mirrored from www.nsibranly.fr/loicO/monMonde.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Jun 2021 16:22:06 GMT -->
+</html>

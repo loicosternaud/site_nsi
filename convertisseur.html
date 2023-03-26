@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from www.nsibranly.fr/loicO/convertisseur.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Jun 2021 16:22:06 GMT -->
+<head>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="convertisseur-2.html">
+    </head>
+    <body>
+        <h1>CONVERTISSEUR DE MONNAIE</h1>
+        <label>SOMME A CONVERTIR : </label><input type="text" placeholder="Somme à convertir" id="somme_euros">
+		<div>
+			<label>A CONVERTIR EN : </label>
+			<input type="radio" id="dollars" value="1.22" name="ma_liste" checked>
+			<label>dollars US</label>
+			<input type="radio" id="yuans" value="7.76" name="ma_liste">
+			<label>Yuans chinois</label>
+		</div>
+		<div><input type="button" value="Convertir" id="bouton_convertir"> <input type="button" value="Raz" id="bouton_raz"></div>
+		<p id="resultat"></p>
+	</body>
+	<script>
+		// Fonctions
+		function reset(){
+			somme_euros.value = "";
+			resultat.textContent = "";
+		}
+		function calcul(){
+			// lecture somme en €
+			let euros = somme_euros.value;
+			if (euros == ""){euros = 0;}
+			euros = parseFloat(euros);
+			// lecture devise
+			let taux;
+			let unite;
+			if(dollars.checked == true){taux = dollars.value; unite = " US $"; }
+			if(yuans.checked == true){taux = yuans.value; unite = " Yuans"; }
+			// calcul
+			let devise = euros * taux;
+			let sortie = euros+" € = "+devise+unite;
+			resultat.textContent = sortie;
+		}
+		// Main
+		// Création des objets repérants les éléments html
+		let somme_euros = document.querySelector("#somme_euros");
+		let bouton_convertir = document.querySelector("#bouton_convertir");
+		let bouton_raz = document.querySelector("#bouton_raz");
+		let resultat = document.querySelector("#resultat");
+		let dollars = document.querySelector("#dollars");
+        let yuans = document.querySelector("#yuans");
+        reset();
+		// Création des évènements
+		bouton_convertir.addEventListener("click",calcul);
+		bouton_raz.addEventListener("click",reset);
+	</script>
+
+<!-- Mirrored from www.nsibranly.fr/loicO/convertisseur.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Jun 2021 16:22:06 GMT -->
+</html>

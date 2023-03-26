@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+    
+<!-- Mirrored from www.nsibranly.fr/loicO/desert.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Jun 2021 16:22:06 GMT -->
+<head>
+        <title>Désert</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width= device-width, initial-scale=1.0">
+    </head>
+    <!-----------------------------  Début CSS ------------------------------------------>
+    <style>
+		body{background-image: url("desert-2.html") ;
+		background-size: cover ;}
+		.fleche_gauche{width:80px; margin:10px;}
+		.fleche_droite{float:right; width:80px; margin:10px;}
+		.conteneur_personnage{height :400px ;}
+		.personnage{
+ 			position:relative;
+ 			height:200px;
+ 			left:195px;
+ 			top:96px;
+ 			border:2px solid black;
+		}
+    </style>
+    <!-----------------------------  Fin CSS -------------------------------------------->
+    <!----------------------------------------------------------------------------------->
+    <!------------------------------  Début Html  --------------------------------------->
+    <body>
+        <div class="conteneur_fleches">
+			<img class="fleche_gauche" src="gauche.png">
+			<img class="fleche_droite" src="droite.png">
+		</div>
+		<div class="conteneur_personnage">
+			<img class="personnage" src="position0.html">
+		</div>
+    </body>
+    <!------------------------------  Fin Html  ------------------------------------------>
+    <!----------------------------------------------------------------------------------->
+    <!------------------------------  Début Javascript  ---------------------------------->
+    <script>
+        /* Repérage des éléments html */
+		let fleche_gauche = document.querySelector(".fleche_gauche");
+		let fleche_droite = document.querySelector(".fleche_droite");
+		let conteneur_personnage = document.querySelector(".conteneur_personnage");
+		let personnage = document.querySelector(".personnage");
+		/* Positionnement initial de l'image */
+		let L = (conteneur_personnage.clientWidth); /*largeur écran*/
+		let H = (conteneur_personnage.clientHeight); /*hauteur bloc*/
+		let l = 100; /*largeur image*/
+		let h = 200; /*hauteur image*/
+		let LEFT = (L-l)/2;
+		let TOP = (H-h)/2;
+		console.log(LEFT , TOP);
+		personnage.style.left=(LEFT+"px"); /*positionnement horizontal*/
+		personnage.style.top = (TOP+"px"); /*positionnement vertical*/
+		/* Creation d'évennements liés aux clicks sur les flèches*/
+		fleche_droite.addEventListener('click',suivante);
+		let n = 0;
+		/* Repositionnement initial de l'image à droite avec une taille réduite */
+		LEFT = (L-l);
+		let hauteur = 100;
+		let d = (L-l);
+		personnage.style.left=(LEFT+"px");
+		personnage.style.height=(hauteur+"px");
+		function suivante(){
+			if(n == 47){n = 0;}
+			else {
+				n = n + 1;
+			}
+			let nom_fichier = "position"+n+".png";
+			personnage.setAttribute('src',nom_fichier);
+			/* Gestion des images des positions 0 à 11 */
+			if(n >= 0 & n <= 11){
+				let hauteur = 100/11*n+100;
+				personnage.style.height=(hauteur+"px");
+			}
+			/* Gestion des images des positions 12 à 23 */
+			if(n >= 12 & n <= 23){
+				LEFT = -d/11*n + 23*d/11;
+				personnage.style.left=(LEFT+"px");
+			}
+			/* Gestion des images des positions 24 à 35 */
+			if(n >= 24 & n <= 35){
+				LEFT = d/11*n - 24*d/11;
+				personnage.style.left=(LEFT+"px");
+			}
+			/* Gestion des images des positions 36 à 47 */
+			if(n >= 36 & n <= 47){
+				LEFT = -100/11*n + 200-36(-100/11);
+				personnage.style.left=(LEFT+"px");
+			}
+		 
+		}
+		
+        if (L < 600){ for (let i = 0 ; i<500; i++){setTimeout(suivante,i*100);} }
+    </script>
+    <!------------------------------  Fin Javascript  ------------------------------------>
+
+
+<!-- Mirrored from www.nsibranly.fr/loicO/desert.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Jun 2021 16:22:07 GMT -->
+</html>
+

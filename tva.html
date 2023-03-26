@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from www.nsibranly.fr/loicO/tva.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Jun 2021 16:22:05 GMT -->
+<head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="tva.css">
+    </head>
+    <body>
+        <h1>Calcul d'un prix TTC</h1>
+        <div class="entrees">
+            <input type="text" placeholder="Prix HT" id="ht">
+            <input type="text" placeholder="Taux TVA" id="tva">
+        </div>
+        <div class="images">
+            <img src="gouv.png" id="im">
+            <img src="raz.png" id="raz">
+        </div>
+        <p>Prix TTC : <span id="affichage"></span></p>
+    </body>
+    <script>
+        // Fonctions
+        function reset(){
+            ht.value = "";
+            tva.value = "";
+            affichage.textContent = "";
+        }
+        function calcul(){
+            // Lecture prix HT dans input
+            let prixHT = ht.value;
+            if (prixHT == ""){prixHT = 0;}
+            prixHT = parseFloat(prixHT);
+            // Lecture taux Tva dans input
+            let tauxTva = tva.value;
+            if (tauxTva == ""){tauxTva = 0;}
+            tauxTva = parseFloat(tauxTva);
+            // Calcul prix TTC
+            let prixTtC = prixHT * tauxTva/100 + prixHT;
+            // Affichage du prix dans le span
+            affichage.textContent = prixTtC+" €";
+        }
+        // Main
+        let ht = document.querySelector("#ht");
+        let tva = document.querySelector("#tva");
+        let affichage = document.querySelector("#affichage");
+        let im = document.querySelector("#im");
+        let raz = document.querySelector("#raz");
+        reset();
+        // Evènements
+        im.addEventListener('mouseover',function(){
+        im.style.borderRadius="10px";
+        im.style.border="1px solid black";});
+        im.addEventListener('mouseover',function(){
+        im.style.borderRadius="0px";
+        im.style.border="none";});
+        im.addEventListener('click',calcul);
+        raz.addEventListener('mouseover',function(){
+            raz.style.borderRadius="10px";
+            raz.style.border="1px solid black";});
+        raz.addEventListener('mouseover',function(){
+            raz.style.borderRadius="0px";
+            raz.style.border="none";});
+        raz.addEventListener('click',reset);
+    </script>
+
+<!-- Mirrored from www.nsibranly.fr/loicO/tva.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Jun 2021 16:22:05 GMT -->
+</html>
